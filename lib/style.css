@@ -1,0 +1,15 @@
+a:hover {
+  text-decoration: none !important;
+}
+
+a {
+  border-radius: 5px;
+}
+
+.linkLight:hover {
+  color: #00a0dc;
+}
+
+.linkDark:hover {
+  color: #fbd38d;
+}
