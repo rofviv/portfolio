@@ -1,45 +1,15 @@
-import NextLink from "next/link";
 import {
   Container,
   Box,
-  Link,
   Stack,
   Heading,
   Flex,
-  Menu,
-  MenuItem,
-  MenuList,
-  MenuButton,
-  IconButton,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { HamburgerIcon } from "@chakra-ui/icons";
-// import { IoLogoGithub } from "react-icons/io5";
 import DarkModeBtn from "./dark-mode-btn";
 import Logo from "./Logo";
-
-const LinkItem = ({ href, path, target, children, ...props }) => {
-  const active = path === href;
-  const activeColor = useColorModeValue("#fff", "#000");
-  const activeBgColor = useColorModeValue("#00a0dc", "#fbd38d");
-
-  return (
-    <NextLink href={href} passHref scroll={false}>
-      <Link
-        p={2}
-        color={active ? activeColor : undefined}
-        bg={active ? activeBgColor : undefined}
-        target={target}
-        {...props}
-        className={
-          !active ? useColorModeValue("linkLight", "linkDark") : undefined
-        }
-      >
-        {children}
-      </Link>
-    </NextLink>
-  );
-};
+import MyDrawer from "./drawer";
+import LinkItem from "./link-item";
 
 const Navbar = (props) => {
   const { path } = props;
@@ -89,52 +59,13 @@ const Navbar = (props) => {
             <LinkItem href="/about" path={path}>
               Acerca de
             </LinkItem>
-            {/* <LinkItem
-            target="_blank"
-            href="https://github.com/craftzdog/craftzdog-homepage"
-            path={path}
-            display="inline-flex"
-            alignItems="center"
-            style={{ gap: 4 }}
-            pl={2}
-          >
-            <IoLogoGithub />
-            Source
-          </LinkItem> */}
           </Stack>
         </Box>
 
         <Box flex={1} align="right">
           <DarkModeBtn />
           <Box ml={2} display={{ base: "inline-block", md: "none" }}>
-            <Menu isLazy id="navbar-menu">
-              <MenuButton
-                as={IconButton}
-                icon={<HamburgerIcon />}
-                variant="outline"
-                aria-label="Options"
-              />
-              <MenuList>
-                <NextLink href="/" passHref>
-                  <MenuItem as={Link}>Inicio</MenuItem>
-                </NextLink>
-                <NextLink href="/works" passHref>
-                  <MenuItem as={Link}>Trabajos</MenuItem>
-                </NextLink>
-                <NextLink href="/skills" passHref>
-                  <MenuItem as={Link}>Habilidades</MenuItem>
-                </NextLink>
-                <NextLink href="/about" passHref>
-                  <MenuItem as={Link}>Acerca de</MenuItem>
-                </NextLink>
-                {/* <MenuItem
-                  as={Link}
-                  href="https://github.com/craftzdog/craftzdog-homepage"
-                >
-                  View Source
-                </MenuItem> */}
-              </MenuList>
-            </Menu>
+            <MyDrawer path={path} />
           </Box>
         </Box>
       </Container>
