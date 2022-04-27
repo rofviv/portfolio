@@ -13,3 +13,7 @@ a {
 .linkDark:hover {
   color: #fbd38d;
 }
+
+.grid-item-thumbnail {
+  border-radius: 5px;
+}
